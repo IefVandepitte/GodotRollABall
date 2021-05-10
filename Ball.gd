@@ -25,7 +25,9 @@ func _process(delta):
 	var grav = Input.get_gravity()
 	var mag = Input.get_magnetometer()
 	var gyro = Input.get_gyroscope()
-	
+#	var force = Vector3(acc.x, 0, 0) x is good
+	var force = Vector3(acc.x, 0, acc.y * -1)
+	add_central_force(force.normalized() * speed) 
 				
 
 func _integrate_forces(state):
